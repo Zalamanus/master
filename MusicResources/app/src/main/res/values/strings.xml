@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MusicResources</string>
+    <string name="mainLabel">Elvis Presley</string>
+    <string name="playLabel">Play</string>
+    <string name="pauseLabel">Pause</string>
+    <string name="nextLabel">Next Song</string>
+</resources>

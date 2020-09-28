@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Multithreading</string>
+    <string name="list_refreshed">Список обновлен</string>
+    <string name="increment_result">Ожидаемое значение = %d\nПолученное значение = %d\nЗатраченное время = %d милисекунд</string>
+    <string name="increment_w_sync">Increment w/sync</string>
+    <string name="result">Результат</string>
+    <string name="increment">Increment</string>
+    <string name="threads_count">количество потоков</string>
+</resources>

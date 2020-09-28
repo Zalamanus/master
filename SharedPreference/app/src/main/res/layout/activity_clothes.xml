@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ClothesActivity"
+    android:layout_margin="20dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:gravity="center_horizontal"
+        android:id="@+id/clothes_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Список одежды"
+        android:textSize="24sp"/>
+    <EditText
+        android:id="@+id/editClothes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="18sp"
+        android:hint="Введите название одежды..." />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onClickAdd"
+            android:text="Добавить"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onClickRemove"
+            android:text="Удалить"/>
+    </LinearLayout>
+    <ListView
+        android:id="@+id/clothesList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:choiceMode="singleChoice"/>
+</LinearLayout>

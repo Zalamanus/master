@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">LinerLayout</string>
+    <string-array name="Names">
+        <item>Имя1</item>
+        <item>Имя2</item>
+        <item>Имя3</item>
+        <item>Имя4</item>
+        <item>Имя5</item>
+        <item>Имя6</item>
+    </string-array>
+    <string-array name="Groups">
+        <item>Группа1</item>
+        <item>Группа2</item>
+        <item>Группа3</item>
+    </string-array>
+
+</resources>

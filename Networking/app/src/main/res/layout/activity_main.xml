@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/movieNameET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/movie_name"
+        android:inputType="text"
+        android:autofillHints="@string/movie_name"/>
+
+    <EditText
+        android:id="@+id/movieYearET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/movie_year"
+        android:inputType="number"
+        android:autofillHints="@string/movie_year"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/movietype_dropdown"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/movie_type">
+
+        <AutoCompleteTextView
+            android:id="@+id/textField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:labelFor="@+id/movietype_dropdown"
+            tools:ignore="LabelFor" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/search" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:layout_marginTop="16dp"
+        android:id="@+id/errorTextTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Ошибка при запросе"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        />
+
+    <Button
+        android:id="@+id/repeatButton"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/repeat_search"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/movieList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:itemCount="6"
+        tools:listitem="@layout/item_movie" />
+
+
+</LinearLayout>

@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Moshi</string>
+    <string name="keywors_is_empty">Строка для поиска не должна быть пуста</string>
+    <string name="repeat_search">Повторить запрос</string>
+    <string name="movieId">ID: %s</string>
+    <string name="movie_name">Название фильма</string>
+    <string name="movie_year">Год фильма</string>
+    <string name="movie_type">Вид фильма</string>
+    <string name="search">Поиск</string>
+    <string name="movie_avatar">Movie Avatar</string>
+    <string name="loading">загрузка</string>
+    <string name="score_pattent">%s : %s</string>
+    <string name="scores">Оценки:</string>
+    <string name="your_score">Ваша оценка:</string>
+    <string name="star1">Звезда 1</string>
+    <string name="star2">Звезда 2</string>
+    <string name="star3">Звезда 3</string>
+    <string name="star4">Звезда 4</string>
+    <string name="star5">Звезда 5</string>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="first_name">18dp</dimen>
+    <dimen name="last_name">18dp</dimen>
+    <dimen name="online">12dip</dimen>
+    <dimen name="last_seen">12dip</dimen>
+
+</resources>

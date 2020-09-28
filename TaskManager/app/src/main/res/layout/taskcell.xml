@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:baselineAligned="false">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tvTaskTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textTask" />
+
+        <TextView
+            android:id="@+id/tvTaskDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textTask" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingEnd="10dp"
+        android:paddingStart="0dp">
+
+        <TextView
+            android:id="@+id/tvTaskCreated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textTaskCreated" />
+
+        <TextView
+            android:id="@+id/tvTaskModified"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textTaskCreated" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cbDone"
+            android:layout_width="@dimen/iconsSize"
+            android:layout_height="@dimen/iconsSize"
+            android:gravity="center"
+            android:scaleX="1.4"
+            android:scaleY="1.4"/>
+
+        <ImageButton
+            android:id="@+id/ibEdit"
+            android:layout_width="@dimen/iconsSize"
+            android:layout_height="@dimen/iconsSize"
+            android:src="@android:drawable/ic_menu_edit"
+            android:contentDescription="@string/textEdit"
+            android:background="@android:color/white"/>
+
+        <ImageButton
+            android:id="@+id/ibDelete"
+            android:layout_width="@dimen/iconsSize"
+            android:layout_height="@dimen/iconsSize"
+            android:contentDescription="@string/textDelete"
+            android:src="@android:drawable/ic_delete"
+            android:background="@android:color/white"/>
+    </LinearLayout>
+
+</LinearLayout>

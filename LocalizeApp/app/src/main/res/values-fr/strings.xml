@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">LocalizeApp</string>
+    <string name="button_name">Sélectionnez une automobile</string>
+    <string name="textLadaGranta">Voiture de Lada Granta</string>
+    <string name="textLadaPriora">Voiture de Lada Priora</string>
+    <string name="textLadaVesta">Voiture de Lada Vesta</string>
+    <string-array name="available_avto">
+        <item>Lada Granta</item>
+        <item>Lada Priora</item>
+        <item>Lada Vesta</item>
+    </string-array>
+</resources>

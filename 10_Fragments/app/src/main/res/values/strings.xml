@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ViewAndLayout</string>
+    <string name="tv_avtorization">Авторизация</string>
+    <string name="login_hint">Введите логин (login)</string>
+    <string name="password_hint">Введите пароль (password)</string>
+    <string name="accept_agreement">Принимаю соглашение</string>
+    <string name="buttonLogin">Войти</string>
+    <string name="image_description">Картинка авторизации</string>
+    <string name="autorization_accepted">Авторизация успешна</string>
+    <string name="make_anr">Make ANR</string>
+    <string name="autorization_failure">Неверный логин или пароль</string>
+
+</resources>

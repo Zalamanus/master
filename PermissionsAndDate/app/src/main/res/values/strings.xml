@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">PermissionsAndDate</string>
+    <string name="need_permission">Для отображения\nсписка локаций\nнеобходимо\nразрешение</string>
+    <string name="give_permission">Дать разрешение</string>
+    <string name="list_is_empty">Нет локаций\nдля отображения</string>
+    <string name="get_location">Получить локацию</string>
+    <string name="requestLocationCanceled">Запрос локации был отменен</string>
+    <string name="requestLocationFailed">Запрос локации не удался</string>
+    <string name="locationNotExist">Локация отсутствует</string>
+    <string name="location_avatar">Location Avatar</string>
+    <string name="stop_location_updates">Стоп</string>
+    <string name="needGms">Для работы приложения необходимо наличие Google Play Services на устройстве</string>
+    <string name="ok">ОК</string>
+    <string name="location_info">Широта: %f\nДолгота: %f\nСкорость: %.2f км/ч\nТочность: %.1f м</string>
+</resources>

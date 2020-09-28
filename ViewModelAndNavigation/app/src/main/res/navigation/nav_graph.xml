@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/transportListFragment">
+
+    <fragment
+        android:id="@+id/transportListFragment"
+        android:name="com.example.a12_lists.fragments.TransportListFragment"
+        android:label="TransportListFragment"
+        tools:layout="@layout/fragment_transport_list">
+        <action
+            android:id="@+id/action_transportListFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.a12_lists.fragments.DetailsFragment"
+        android:label="DetailsFragment"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="transport"
+            app:argType="com.example.a12_lists.model.Transport" />
+    </fragment>
+</navigation>

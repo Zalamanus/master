@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    >
+
+    <ImageView
+        android:id="@+id/avatarIV"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:padding="10dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/backgrounds/scenic"
+        android:contentDescription="Car Avatar"/>
+
+    <TextView
+        android:id="@+id/maxSpeedLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/max_speed"
+        app:layout_constraintStart_toEndOf="@+id/avatarIV"
+        app:layout_constraintTop_toBottomOf="@+id/nameTV"
+        app:layout_constraintBottom_toTopOf="@id/doorCountLabel"/>
+
+    <TextView
+        android:id="@+id/maxSpeedTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/maxSpeedLabel"
+        app:layout_constraintTop_toTopOf="@id/maxSpeedLabel"/>
+
+
+    <TextView
+        android:id="@+id/doorCountLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/door_count"
+        app:layout_constraintStart_toEndOf="@+id/avatarIV"
+        app:layout_constraintTop_toBottomOf="@+id/maxSpeedLabel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/nameTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/avatarIV"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/maxSpeedLabel"
+        tools:text="@tools:sample/full_names"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_green_dark"/>
+
+    <TextView
+        android:id="@+id/doorCountTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/doorCountLabel"
+        app:layout_constraintTop_toTopOf="@id/doorCountLabel" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Networking</string>
+    <string name="keywors_is_empty">Строка для поиска не должна быть пуста</string>
+    <string name="repeat_search">Повторить запрос</string>
+    <string name="movieId">ID: %s</string>
+    <string name="year_isnt_correct">Неверно указан год</string>
+    <string name="movie_name">Название фильма</string>
+    <string name="movie_year">Год фильма</string>
+    <string name="movie_type">Вид фильма</string>
+    <string name="search">Поиск</string>
+    <string name="movie_avatar">Movie Avatar</string>
+    <string name="loading">загрузка</string>
+    <string-array name="movie_types_array">
+        <item>Не выбрано</item>
+        <item>Сериал</item>
+        <item>Фильм</item>
+        <item>Эпизод</item>
+        <item>Игра</item>
+    </string-array>
+</resources>

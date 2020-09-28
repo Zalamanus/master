@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="iconsSize">40dp</dimen>
+    <dimen name="titleTextSize">20sp</dimen>
+    <dimen name="textTaskCreated">10sp</dimen>
+    <dimen name="textTask">14sp</dimen>
+</resources>

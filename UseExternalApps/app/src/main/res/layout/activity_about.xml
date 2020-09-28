@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutActivity">
+
+    <TextView
+        android:id="@+id/textAuthorName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="64dp"
+        android:text="Maxim Titov"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textZipCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="659002"
+        app:layout_constraintStart_toStartOf="@+id/textAuthorName"
+        app:layout_constraintTop_toBottomOf="@+id/textAuthorName" />
+
+    <TextView
+        android:id="@+id/textCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Russia"
+        app:layout_constraintStart_toStartOf="@+id/textZipCode"
+        app:layout_constraintTop_toBottomOf="@+id/textZipCode" />
+
+    <TextView
+        android:id="@+id/textCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Gorno-Altaysk"
+        app:layout_constraintStart_toStartOf="@+id/textCountry"
+        app:layout_constraintTop_toBottomOf="@+id/textCountry" />
+
+    <Button
+        android:id="@+id/buttonGoOnAuthorSite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="author's site"
+        app:layout_constraintStart_toStartOf="@+id/textCity"
+        app:layout_constraintTop_toBottomOf="@+id/textCity"
+        android:onClick="goOnAuthorSite"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
