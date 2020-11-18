@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Food Locator</string>
+    <string name="enable_location_access">Разрешите доступ к местоположению</string>
+    <string name="location_access_denied">Доступ к местоположению запрещен</string>
+</resources>
