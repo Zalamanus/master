@@ -2,4 +2,7 @@
     <string name="app_name">Food Locator</string>
     <string name="enable_location_access">Разрешите доступ к местоположению</string>
     <string name="location_access_denied">Доступ к местоположению запрещен</string>
+    <string name="wait_for_location_update">Ожидайте определения местоположения</string>
+    <string name="location_determining_imposible">Определение вашего местопожения невозможно</string>
+    <string name="map_initialization_error">Ошибка инициализации карты</string>
 </resources>

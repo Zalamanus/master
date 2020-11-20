@@ -37,7 +37,7 @@ class FourSquareViewModel(application: Application) : AndroidViewModel(applicati
         get() = venuesLiveData
 
     private val locationLiveData = MutableLiveData<Location>()
-    val location: LiveData<Location>
+    val myLocation: LiveData<Location>
         get() = locationLiveData
 
     private val locationTurnOnNeedLiveData = SingleLiveEvent<ApiException>()

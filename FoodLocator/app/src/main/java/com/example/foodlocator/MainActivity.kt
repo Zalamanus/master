@@ -21,11 +21,11 @@ class MainActivity : AppCompatActivity() {
                 when(resultCode) {
                     Activity.RESULT_OK -> {
                         // All required changes were successfully made
-                        toast("Пользователь включил определение метоположения")
+                        toast(getString(R.string.wait_for_location_update))
                     }
                     Activity.RESULT_CANCELED -> {
                         // The user was asked to change settings, but chose not to
-                        toast("Пользователь не включил определение метоположения")
+                        toast(getString(R.string.location_determining_imposible))
                     }
                 }
             }
