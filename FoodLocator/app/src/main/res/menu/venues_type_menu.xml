@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<item
+    android:id="@+id/menu_food"
+    android:title="@string/food"
+    app:iconTint="@android:color/white"
+    app:showAsAction="never" />
+<item
+    android:id="@+id/menu_coffee"
+    android:title="@string/coffee"
+    app:iconTint="@android:color/white"
+    app:showAsAction="never"/>
+<item
+    android:id="@+id/menu_shops"
+    android:title="@string/shops"
+    app:iconTint="@android:color/white"
+    app:showAsAction="never"/>
+<item
+    android:id="@+id/menu_trending"
+    android:title="@string/trending"
+    app:iconTint="@android:color/white"
+    app:showAsAction="never"/>
+
+</menu>

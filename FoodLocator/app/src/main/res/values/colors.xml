@@ -7,4 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="food">#A75914</color>
+    <color name="coffee">#A49A83</color>
+    <color name="shops">#A4151A</color>
+    <color name="trending">#A44692</color>
+
 </resources>

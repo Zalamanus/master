@@ -5,4 +5,10 @@
     <string name="wait_for_location_update">Ожидайте определения местоположения</string>
     <string name="location_determining_imposible">Определение вашего местопожения невозможно</string>
     <string name="map_initialization_error">Ошибка инициализации карты</string>
+    <string name="food">Еда</string>
+    <string name="coffee">Кофе</string>
+    <string name="shops">Магазины</string>
+    <string name="trending">В тренде</string>
+    <string name="me">Me</string>
+    <string name="show_my_location">Показать мое местоположение</string>
 </resources>

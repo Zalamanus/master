@@ -1,4 +1,4 @@
-package com.example.foodlocator.model
+package com.example.foodlocator.model.foursquarejson
 
 import com.squareup.moshi.JsonClass
 

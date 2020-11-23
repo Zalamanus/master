@@ -1,43 +1,75 @@
 package com.example.foodlocator
 
 import android.Manifest
-import android.location.Location
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
+import androidx.annotation.DrawableRes
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.graphics.drawable.toBitmap
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import com.example.foodlocator.model.CustomMarker
 import com.example.foodlocator.model.FourSquareViewModel
 import com.example.foodlocator.utils.toast
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.MapFragment
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.model.CameraPosition
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import permissions.dispatcher.PermissionRequest
 import permissions.dispatcher.ktx.constructPermissionsRequest
+import kotlin.math.roundToInt
 
 
-class MainFragment: Fragment(R.layout.fragment_main), OnMapReadyCallback {
+class MainFragment : Fragment(R.layout.fragment_main) {
 
     private lateinit var viewModel: FourSquareViewModel
-//    private lateinit var binding: FragmentMainBinding
 
     private var googleMap: GoogleMap? = null
+    private var meMarker: Marker? = null
+    private var needToCenter = true
+    private val venueMarkers = mutableSetOf<Marker>()
 
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        binding = FragmentMainBinding.inflate(inflater)
-//        return binding.root
-//    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.venues_type_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_food -> {
+                showVenues(FourSquareViewModel.FOOD_SECTION)
+                true
+            }
+            R.id.menu_coffee -> {
+                showVenues(FourSquareViewModel.COFFEE_SECTION)
+                true
+            }
+            R.id.menu_shops -> {
+                showVenues(FourSquareViewModel.SHOPS_SECTION)
+                true
+            }
+            R.id.menu_trending -> {
+                showVenues(FourSquareViewModel.TRENDING_SECTION)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -45,21 +77,44 @@ class MainFragment: Fragment(R.layout.fragment_main), OnMapReadyCallback {
 
         bindViewModel()
 
-        makeRequestButton.setOnClickListener {
-            viewModel.getVenues("Gorno-Altaisk", "trending")
+        showMyLocationButton.setOnClickListener {
+            if (meMarker == null) {
+                viewModel.getFineLocation()
+                needToCenter = true
+            } else
+                centerOnMarker(meMarker!!)
         }
 
         Handler(Looper.getMainLooper()).post {
             constructPermissionsRequest(
                 Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
                 onShowRationale = ::onContactPermissionShowRationale,
                 onPermissionDenied = ::onContactPermissionDenied,
                 onNeverAskAgain = ::onContactPermissionNeverAskAgain,
                 requiresPermission = ::onLocationPermissionGranted
-
             ).launch()
         }
 
+
+    }
+
+    private fun showVenues(section: String) {
+        val latitude = googleMap?.cameraPosition?.target?.latitude.toString()
+        val longitude = googleMap?.cameraPosition?.target?.longitude.toString()
+        val radius = googleMap?.cameraPosition?.zoom?.let {
+            (100000 / it).roundToInt()
+        }
+        viewModel.getVenues("$latitude,$longitude", section, radius)
+    }
+
+    private fun centerOnMarker(marker: Marker) {
+        val cameraPosition = CameraPosition.Builder()
+            .target(marker.position)
+            .zoom(13f)
+            .build()
+        val cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition)
+        googleMap?.animateCamera(cameraUpdate)
 
     }
 
@@ -78,53 +133,48 @@ class MainFragment: Fragment(R.layout.fragment_main), OnMapReadyCallback {
          */
         try {
             if (null == googleMap) {
-                //todo Надо найти mapView
-                (mapView as MapFragment).getMapAsync {
+                val mapView = childFragmentManager.findFragmentById(R.id.mapView)
+                (mapView as SupportMapFragment).getMapAsync {
                     googleMap = it
                 }
-                /**
-                 * If the map is still null after attempted initialisation,
-                 * show an error to the user
-                 */
-//                if (null == googleMap) {
-//                    toast(getString(com.example.foodlocator.R.string.map_initialization_error))
-//                }
             }
         } catch (exception: NullPointerException) {
             Log.e("mapApp", exception.toString())
         }
     }
 
-    private fun addMeMarker(location: Location) {
-        val lat = location.latitude
-        val lng = location.longitude
-        //устанавливаем позицию и масштаб отображения карты
-        val cameraPosition = CameraPosition.Builder()
-            .target(LatLng(lat, lng))
-            .zoom(15f)
-            .build()
-        val cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition)
-        googleMap?.animateCamera(cameraUpdate)
-        if (null != googleMap) {
-            googleMap!!.addMarker(
-                MarkerOptions()
-                    .position(LatLng(lat, lng))
-                    .title("Me")
-                    .draggable(false)
-            )
-        }
-    }
-
 
     private fun bindViewModel() {
-        viewModel.venues.observe(viewLifecycleOwner) {
-            it.forEach { venue ->
-                Log.d("test", "Location = ${venue.location.address}")
+        viewModel.venueMarkers.observe(viewLifecycleOwner) { markers ->
+            venueMarkers.forEach { marker ->
+                marker.remove()
             }
+            markers.forEach { customMarker ->
+                addMarkerToMap(customMarker)?.let { marker ->
+                    venueMarkers.add(marker)
+                }
+            }
+            Log.d("test", "${markers.size}")
         }
-        viewModel.myLocation.observe(viewLifecycleOwner) {
-            toast("Latitude = ${it.latitude}, longtitude = ${it.longitude}")
-            addMeMarker(it)
+
+        viewModel.userMarker.observe(viewLifecycleOwner) {
+            it?.let {customMarker ->
+                addMarkerToMap(customMarker)?.let { marker ->
+                    meMarker?.remove()
+                    meMarker = marker
+                    if (needToCenter) {
+                        centerOnMarker(marker)
+                        needToCenter = false
+                    }
+                }
+
+                //Показ заведений с задержкой для перемещения камеры
+                Handler(Looper.getMainLooper()).postDelayed(
+                    { showVenues(viewModel.getDefaultSection()) },
+                    2000
+                )
+
+            }
         }
         viewModel.locationTurnOnNeed.observe(viewLifecycleOwner) {
             // Cast to a resolvable exception.
@@ -138,9 +188,29 @@ class MainFragment: Fragment(R.layout.fragment_main), OnMapReadyCallback {
         }
     }
 
+    private fun addMarkerToMap(marker: CustomMarker): Marker? {
+        val lat = marker.latitude ?: return null
+        val lng = marker.longitude ?: return null
+        if (null != googleMap) {
+            return googleMap!!.addMarker(
+                MarkerOptions()
+                    .icon(
+                        BitmapDescriptorFactory.fromBitmap(
+                            getBitmapFromVectorDrawable(marker.drawable,marker.tint)
+                        )
+                    )
+                    .position(LatLng(lat, lng))
+                    .title(marker.title)
+                    .draggable(false)
+            )
+        }
+        return null
+    }
+
 
     private fun onLocationPermissionGranted() {
-        viewModel.getLocation()
+        showMyLocationButton.isVisible = true
+        viewModel.getCoarseLocation()
     }
 
     override fun onStop() {
@@ -149,22 +219,24 @@ class MainFragment: Fragment(R.layout.fragment_main), OnMapReadyCallback {
     }
 
 
-
     private fun onContactPermissionNeverAskAgain() {
         toast(R.string.enable_location_access)
+        showMyLocationButton.isVisible = false
     }
 
     private fun onContactPermissionDenied() {
         toast(R.string.location_access_denied)
+        showMyLocationButton.isVisible = false
     }
 
     private fun onContactPermissionShowRationale(permissionRequest: PermissionRequest) {
         permissionRequest.proceed()
     }
 
-    override fun onMapReady(p0: GoogleMap?) {
-        googleMap = p0
+    private fun getBitmapFromVectorDrawable(@DrawableRes drawableId: Int, tint: Int): Bitmap? {
+        val drawable = AppCompatResources.getDrawable(requireContext(), drawableId)
+        drawable?.alpha = 255
+        drawable?.setTint(requireContext().getColor(tint))
+        return drawable?.toBitmap()
     }
-
-
 }
