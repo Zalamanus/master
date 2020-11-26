@@ -19,7 +19,7 @@
     <string name="venue_with_name_and_address">заведение с именем и адресом</string>
     <string name="select_venue_type">Выбирай тип заведений и ищи их на карте</string>
     <string name="menu_venue_types">меню выбора типа заведений</string>
-    <string name="determine_your_location">Определяй свое местопожение</string>
+    <string name="determine_your_location">Определяй свое местоположение</string>
     <string name="location_button">кнопка определения местоположения</string>
 
 </resources>
