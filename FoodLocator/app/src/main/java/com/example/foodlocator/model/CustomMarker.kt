@@ -8,6 +8,7 @@ class CustomMarker(
     val latitude: Double?,
     val longitude: Double?,
     val title: String,
+    val address: String?,
     val drawable: Int,
     val tint: Int
 ) {
@@ -15,6 +16,7 @@ class CustomMarker(
         builder.latitude,
         builder.longitude,
         builder.title,
+        builder.address,
         builder.drawableRes,
         builder.tint
 
@@ -27,6 +29,8 @@ class CustomMarker(
             private set
         var title: String = "undefined"
             private set
+        var address: String? = null
+            private set
 
         @DrawableRes
         var drawableRes: Int = R.drawable.ic_baseline_not_listed_location
@@ -38,6 +42,7 @@ class CustomMarker(
         fun latitude(value: Double) = apply { latitude = value }
         fun longitude(value: Double) = apply { longitude = value }
         fun title(value: String) = apply { title = value }
+        fun address(value: String?) = apply { address = value }
         fun drawableRes(value: Int) = apply { drawableRes = value }
         fun tint(value: Int) = apply { tint = value }
         fun build() = CustomMarker(this)

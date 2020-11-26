@@ -70,6 +70,7 @@ class FourSquareViewModel(application: Application) : AndroidViewModel(applicati
                     .latitude(venue.location.lat)
                     .longitude(venue.location.lng)
                     .title(venue.name)
+                    .address(venue.location.address)
                     .drawableRes(drawable)
                     .tint(tint)
                     .build()
@@ -162,9 +163,18 @@ class FourSquareViewModel(application: Application) : AndroidViewModel(applicati
         }
     }
 
+    fun disableIntro() {
+        sharedPrefs.edit().putBoolean(DISABLE_INTRO, true).apply()
+    }
+
+    fun isIntroDisabled(): Boolean {
+        return sharedPrefs.getBoolean(DISABLE_INTRO,false)
+    }
+
     companion object {
         private const val SHARED_PREFS_FILE = "prefs"
         private const val DEFAULT_SECTION = "default_section"
+        private const val DISABLE_INTRO = "disable_intro"
         const val FOOD_SECTION = "food"
         const val SHOPS_SECTION = "shops"
         const val COFFEE_SECTION = "coffee"

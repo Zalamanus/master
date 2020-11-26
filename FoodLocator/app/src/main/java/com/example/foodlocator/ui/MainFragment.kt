@@ -1,4 +1,4 @@
-package com.example.foodlocator
+package com.example.foodlocator.ui
 
 import android.Manifest
 import android.graphics.Bitmap
@@ -15,6 +15,8 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import com.example.foodlocator.MainActivity
+import com.example.foodlocator.R
 import com.example.foodlocator.model.CustomMarker
 import com.example.foodlocator.model.FourSquareViewModel
 import com.example.foodlocator.utils.toast
@@ -199,6 +201,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                             getBitmapFromVectorDrawable(marker.drawable,marker.tint)
                         )
                     )
+                    .snippet(marker.address)
                     .position(LatLng(lat, lng))
                     .title(marker.title)
                     .draggable(false)
