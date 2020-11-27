@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Поиск еды</string>
+    <string name="enable_location_access">Разрешите доступ к местоположению</string>
+    <string name="location_access_denied">Доступ к местоположению запрещен</string>
+    <string name="wait_for_location_update">Ожидайте определения местоположения</string>
+    <string name="location_determining_imposible">Определение вашего местопожения невозможно</string>
+    <string name="map_initialization_error">Ошибка инициализации карты</string>
+    <string name="food">Еда</string>
+    <string name="coffee">Кофе</string>
+    <string name="shops">Магазины</string>
+    <string name="trending">В тренде</string>
+    <string name="me">Я</string>
+    <string name="show_my_location">Показать мое местоположение</string>
+    <string name="close">Закрыть</string>
+    <string name="skip">Пропустить</string>
+    <string name="skip_intro">Пропустить презентацию?</string>
+    <string name="yes">да</string>
+    <string name="find_venue_information">Узнавай информацию о заведении</string>
+    <string name="venue_with_name_and_address">заведение с именем и адресом</string>
+    <string name="select_venue_type">Выбирай тип заведений и ищи их на карте</string>
+    <string name="menu_venue_types">меню выбора типа заведений</string>
+    <string name="determine_your_location">Определяй свое местоположение</string>
+    <string name="location_button">кнопка определения местоположения</string>
+
+</resources>
