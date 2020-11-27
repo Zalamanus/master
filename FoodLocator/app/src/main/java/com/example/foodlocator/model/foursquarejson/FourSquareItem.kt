@@ -1,8 +1,8 @@
 package com.example.foodlocator.model.foursquarejson
 
-import com.squareup.moshi.JsonClass
+import kotlinx.serialization.Serializable
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class FourSquareItem (
     val venue: FourSquareVenue
 )
