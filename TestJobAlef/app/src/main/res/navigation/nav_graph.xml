@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/photoGridFragment">
+
+    <fragment
+        android:id="@+id/photoGridFragment"
+        android:name="com.example.testjobalef.ui.PhotoGridFragment"
+        android:label="PhotoGridFragment" >
+        <action
+            android:id="@+id/action_photoGridFragment_to_bigPhotoFragment"
+            app:destination="@id/bigPhotoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bigPhotoFragment"
+        android:name="com.example.testjobalef.ui.BigPhotoFragment"
+        android:label="BigPhotoFragment" >
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
+</navigation>
